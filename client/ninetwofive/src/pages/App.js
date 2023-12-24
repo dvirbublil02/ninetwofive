@@ -9,9 +9,9 @@ import { Navibar} from "../components/Navibar";
 import { Bracelets } from "./Bracelets";
 import { Earing } from "./Earing";
 import { Necklace } from "./Necklace";
-import { New } from "./New";
 import { Watches } from "./Watches";
 import { Rings } from "./Rings";
+import { Cart } from "./Cart";
 
 function App() {
   return (
@@ -29,9 +29,9 @@ function App() {
           <Route path="/Bracelets" element={<Bracelets />}/>
           <Route path="/Earing" element={<Earing />}/>
           <Route path="/Necklace" element={<Necklace />}/>
-          <Route path="/New" element={<New />}/>
           <Route path="/Watches" element={<Watches />}/>
           <Route path="/Rings" element={<Rings />}/>
+          <Route path="/Cart" element={<Cart />}/>
         </Routes>
          
         </div>

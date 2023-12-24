@@ -10,7 +10,7 @@ export const Navibar =() =>{
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="ms-auto ">
-      <Nav.Link as={NavLink} to="/New" style={{ color: 'orange' } }>· חדש ·</Nav.Link>
+      <Nav.Link as={NavLink} to="/Cart" style={{ color: 'orange' } }>· סל קניות ·</Nav.Link>
       <Nav.Link as={NavLink} to="/Watches">· שעונים ·</Nav.Link>
       <Nav.Link as={NavLink} to="/Rings">· טבעות ·</Nav.Link>
       <Nav.Link as={NavLink} to="/Bracelets">· צמידים ·</Nav.Link>
