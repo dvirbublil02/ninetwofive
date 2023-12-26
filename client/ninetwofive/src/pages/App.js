@@ -12,6 +12,7 @@ import { Necklace } from "./Necklace";
 import { Watches } from "./Watches";
 import { Rings } from "./Rings";
 import { Cart } from "./Cart";
+import { Register } from "./Register";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/Watches" element={<Watches />}/>
           <Route path="/Rings" element={<Rings />}/>
           <Route path="/Cart" element={<Cart />}/>
+          <Route path="/Register" element={<Register />}/>
         </Routes>
          
         </div>
