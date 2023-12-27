@@ -24,6 +24,13 @@ export const RegisterForm = () => {
       alert('שם המשתמש צריך להכיל לפחות 3 תווים');
       return;
     }
+        // Regular expression for English letters, numbers, and specific special characters
+    var regex = /^[a-zA-Z0-9!@#%^*()]+$/;
+
+    if (!regex.test(userName)) {
+      alert('שם המשתמש יכול לכלול רק אותיות אנגליות, מספרים, ואת התווים המיוחדים ! @ # % ^ * ( )');
+      return;
+    }
 
     if (password.length < 8) {
       alert('הסיסמה צריכה להכיל לפחות 8 תווים');
@@ -34,29 +41,29 @@ export const RegisterForm = () => {
       alert('כתובת האימייל אינה חוקית');
       return;
     }
-    console.log(`${process.env.REACT_APP_API_BASE_URL}/register`);
+   
    // Call the server-side API to create a new user
   try {
      const response = await registerUser(userName, password, email);
 
      if (response && response.success) {
       console.log('User created successfully');
-      setModalMessage('User created successfully');
+      setModalMessage('!חשבונך נוצר בהצלחה');
       setShowModal(true);
       // Additional logic if needed
     } else if (response && response.message) {
       console.error('Failed to create user:', response.message);
-      setModalMessage(response.message);
+      setModalMessage('שגיאת מערכת , נסה שוב מאוחר יותר');
       setShowModal(true);
       // Additional error handling logic
     } else {
       console.error('Unexpected response format:', response);
-      setModalMessage('Unexpected response format');
+      setModalMessage('שגיאת מערכת , נסה שוב מאוחר יותר');
       setShowModal(true);
     }
   } catch (error) {
     console.error('Error creating user:', error.message);
-    setModalMessage('Error creating user: ' + error.message);
+    setModalMessage('!שם המשתמש או כתובת האימייל תפוסים');
     setShowModal(true);
     // Additional error handling logic
   }
@@ -117,12 +124,12 @@ export const RegisterForm = () => {
        {/* Modal for displaying messages */}
        <Modal show={showModal} onHide={handleCloseModal} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Registration Message</Modal.Title>
+          <Modal.Title>הודעת מערכת - הרשמה</Modal.Title>
         </Modal.Header>
         <Modal.Body>{modalMessage}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>
-            Close
+            אישור
           </Button>
         </Modal.Footer>
       </Modal>
