@@ -3,14 +3,12 @@
 import Axios from 'axios';
 
 const apiUrl = process.env.REACT_APP_API_BASE_URL;
-//this function will create a new user in the database (sending the request to the server
-//and waiting for the response (success/failed/etc)). 
-export const registerUser = async (username, userpassword, usermail) => {
+//
+export const loginUser = async (username, userpassword) => {
   try {
-    const response = await Axios.post(`${apiUrl}/register`, {
+    const response = await Axios.post(`${apiUrl}/login`, {
       username,
       userpassword,
-      usermail,
     });
 
     return response.data;

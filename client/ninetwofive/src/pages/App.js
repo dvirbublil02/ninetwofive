@@ -2,7 +2,7 @@
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import {Routes,Route} from 'react-router-dom';
+import {Routes,Route,useLocation } from 'react-router-dom';
 import { Home } from "./Home";
 import { Login } from "./Login";
 import { Navibar} from "../components/Navibar";
@@ -12,15 +12,17 @@ import { Necklace } from "./Necklace";
 import { Watches } from "./Watches";
 import { Rings } from "./Rings";
 import { Cart } from "./Cart";
-import { Register } from "./Register";
 import { WebRules } from "./WebRules";
+import { Owners} from "./Owners";
 
 function App() {
+  const location = useLocation();
+  const isOwnersRoute = location.pathname === '/Owners';
   return (
     //we need to route the pagees then to call it we need to use link
     <div className="App" id ="home">
       <div className="Nav">
-        <Navibar />
+      {isOwnersRoute ? null : <Navibar />}
       </div>
       
       <div className="routes">
@@ -34,8 +36,8 @@ function App() {
           <Route path="/Watches" element={<Watches />}/>
           <Route path="/Rings" element={<Rings />}/>
           <Route path="/Cart" element={<Cart />}/>
-          <Route path="/Register" element={<Register />}/>
           <Route path="/WebRules" element={<WebRules />}/>
+          <Route path="/Owners" element={<Owners />}/>
         </Routes>
          
         </div>

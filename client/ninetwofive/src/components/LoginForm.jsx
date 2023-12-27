@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Form, Button,Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
+import { loginUser } from '../apis/ServerApi';
 
 export const LoginForm = () => {
   const [userName, setUser] = useState('');
@@ -8,8 +11,11 @@ export const LoginForm = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
 
+    // useNavigate hook for programmatic navigation
+    const navigate = useNavigate();
+
   const handleCloseModal = () => setShowModal(false);
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     // Validation checks
     if (userName.length < 3) {
@@ -23,8 +29,34 @@ export const LoginForm = () => {
       alert('שם המשתמש יכול לכלול רק אותיות אנגליות, מספרים, ואת התווים המיוחדים ! @ # % ^ * ( )');
       return;
     }
-    console.log('User Name:', userName);
-    console.log('Password:', password);
+    try {
+      const response = await loginUser(userName, password);
+ 
+      if (response && response.success) {
+       console.log('User created successfully');
+       setModalMessage('! התחברת בהצלחה ');
+       setShowModal(true);
+
+       // Use navigate to redirect the user to a new page after successful login
+        navigate('/Owners');
+       // Additional logic if needed
+     } else if (response && response.message) {
+       console.error('Failed to create user:', response.message);
+       setModalMessage('שגיאת מערכת , נסה שוב מאוחר יותר');
+       setShowModal(true);
+       // Additional error handling logic
+     } else {
+       console.error('Unexpected response format:', response);
+       setModalMessage('שגיאת מערכת , נסה שוב מאוחר יותר');
+       setShowModal(true);
+     }
+   } catch (error) {
+     console.error('Error creating user:', error.message);
+     setModalMessage('!שם משתמש או סיסמה לא נכונים ');
+     setShowModal(true);
+     // Additional error handling logic
+   }
+   
   };
 
   return (
@@ -57,11 +89,6 @@ export const LoginForm = () => {
         <Button variant="primary" type="submit" className="my-4">
           Login
         </Button>
-
-        {/* Use Link to navigate to the register page */}
-        <Link to="/register" className="btn btn-secondary my-4 mx-2">
-          Register
-        </Link>
       </Form>
 
        {/* Modal for displaying messages */}
