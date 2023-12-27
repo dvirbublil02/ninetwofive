@@ -1,7 +1,8 @@
 // Import necessary React and Bootstrap components
 import React, { useState } from 'react';
 import { Container, Form, Button,Modal  } from 'react-bootstrap';
-import Axios from 'axios';
+
+import { registerUser } from '../apis/ServerApi';
 
 
 // Create the RegistrationForm component
@@ -36,32 +37,29 @@ export const RegisterForm = () => {
     console.log(`${process.env.REACT_APP_API_BASE_URL}/register`);
    // Call the server-side API to create a new user
   try {
-    const response = await Axios.post(`${process.env.REACT_APP_API_BASE_URL}/register`, {
-        username: userName,
-        userpassword: password,
-        usermail: email,
-      });
+     const response = await registerUser(userName, password, email);
 
-      if (response.status === 200 && response.data.success) {
-        // User created successfully
-        console.log('User created successfully');
-        setModalMessage('User created successfully');
-        setShowModal(true);
-        // Additional logic if needed
-      } else {
-        // Display the error message
-        console.error('Failed to create user:', response.data.message);
-        setModalMessage(response.data.message);
-        setShowModal(true);
-        // Additional error handling logic
-      }
-    } catch (error) {
-      // Display the error message
-      console.error('Error creating user:', error.message);
-      setModalMessage('Error creating user: ' + error.message);
+     if (response && response.success) {
+      console.log('User created successfully');
+      setModalMessage('User created successfully');
+      setShowModal(true);
+      // Additional logic if needed
+    } else if (response && response.message) {
+      console.error('Failed to create user:', response.message);
+      setModalMessage(response.message);
       setShowModal(true);
       // Additional error handling logic
+    } else {
+      console.error('Unexpected response format:', response);
+      setModalMessage('Unexpected response format');
+      setShowModal(true);
     }
+  } catch (error) {
+    console.error('Error creating user:', error.message);
+    setModalMessage('Error creating user: ' + error.message);
+    setShowModal(true);
+    // Additional error handling logic
+  }
   
    
   };
