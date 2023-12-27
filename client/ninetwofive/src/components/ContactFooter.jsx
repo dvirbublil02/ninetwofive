@@ -1,6 +1,6 @@
 
 import {Container,Col,Row,Button,Form} from 'react-bootstrap';
-
+import {Link} from 'react-router-dom';
 export const ContactFooter =() =>{
     return(
 
@@ -44,8 +44,10 @@ export const ContactFooter =() =>{
                     <Col>
                     
                     
-                        <p class="text-left text-white">קישור לתקנון האתר </p>
-                        
+                       
+                        <Link to="/WebRules" className="btn btn-secondary  mx-1">
+                                תקנון האתר
+                                </Link> 
                     </Col > 
 
                 </Row>

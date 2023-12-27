@@ -13,6 +13,7 @@ import { Watches } from "./Watches";
 import { Rings } from "./Rings";
 import { Cart } from "./Cart";
 import { Register } from "./Register";
+import { WebRules } from "./WebRules";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/Rings" element={<Rings />}/>
           <Route path="/Cart" element={<Cart />}/>
           <Route path="/Register" element={<Register />}/>
+          <Route path="/WebRules" element={<WebRules />}/>
         </Routes>
          
         </div>
