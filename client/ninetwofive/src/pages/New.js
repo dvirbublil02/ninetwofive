@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import { ContactFooter } from '../components/ContactFooter';
 
-export const Cart = () => {
+export const New = () => {
   const [cartItems, setCartItems] = useState([
     { id: 1, name: 'Product 1', price: 20, quantity: 2, image: 'product1.jpg' },
     { id: 2, name: 'Product 2', price: 30, quantity: 1, image: 'product2.jpg' },

@@ -11,7 +11,7 @@ import { Earing } from "./Earing";
 import { Necklace } from "./Necklace";
 import { Watches } from "./Watches";
 import { Rings } from "./Rings";
-import { Cart } from "./Cart";
+import { New } from "./New";
 import { WebRules } from "./WebRules";
 import { Owners} from "./Owners";
 
@@ -35,7 +35,7 @@ function App() {
           <Route path="/Necklace" element={<Necklace />}/>
           <Route path="/Watches" element={<Watches />}/>
           <Route path="/Rings" element={<Rings />}/>
-          <Route path="/Cart" element={<Cart />}/>
+          <Route path="/New" element={<New />}/>
           <Route path="/WebRules" element={<WebRules />}/>
           <Route path="/Owners" element={<Owners />}/>
         </Routes>

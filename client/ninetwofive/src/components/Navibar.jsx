@@ -5,12 +5,12 @@ export const Navibar =() =>{
   return(
       <Navbar expand="lg" className="navbar navbar-dark bg-dark" >
       <Container>
-        <Navbar.Brand as={NavLink} to="/Home">NineTwoFive</Navbar.Brand>
-        <Navbar.Brand as={NavLink} to="/Login">·  התחברות ·</Navbar.Brand>
+        <Navbar.Brand>NineTwoFive</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/Login">· התחברות ·</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto ">
-            <Nav.Link as={NavLink} to="/Cart" style={{ color: 'orange' } }>· סל קניות ·</Nav.Link>
+            <Nav.Link as={NavLink} to="/New" style={{ color: 'orange' } }>· קולקציה חדשה ·</Nav.Link>
             <Nav.Link as={NavLink} to="/Watches">· שעונים ·</Nav.Link>
             <Nav.Link as={NavLink} to="/Rings">· טבעות ·</Nav.Link>
             <Nav.Link as={NavLink} to="/Bracelets">· צמידים ·</Nav.Link>
