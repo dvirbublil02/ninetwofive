@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Container, Form, Button,Modal  } from 'react-bootstrap';
 import Axios from 'axios';
 
+
 // Create the RegistrationForm component
 export const RegisterForm = () => {
   // State to manage input values
@@ -32,10 +33,10 @@ export const RegisterForm = () => {
       alert('כתובת האימייל אינה חוקית');
       return;
     }
-
+    console.log(`${process.env.REACT_APP_API_BASE_URL}/register`);
    // Call the server-side API to create a new user
   try {
-    const response = await Axios.post('http://localhost:8081/register', {
+    const response = await Axios.post(`${process.env.REACT_APP_API_BASE_URL}/register`, {
         username: userName,
         userpassword: password,
         usermail: email,
