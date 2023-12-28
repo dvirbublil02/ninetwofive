@@ -18,6 +18,7 @@ import { Edit } from "./Edit";
 import { Add } from "./Add";
 import { Remove } from "./Remove";
 import { OwnerNav } from "../components/OwnerNav";
+import {Missing} from "./Missing";
 
 function App() {
   const location = useLocation();
@@ -46,11 +47,15 @@ function App() {
           <Route path="/Rings" element={<Rings />}/>
           <Route path="/New" element={<New />}/>
           <Route path="/WebRules" element={<WebRules />}/>
+
           {/**this is the protected routes */}
           <Route path="/Owners" element={<Owners />}/>
           <Route path="/Edit" element={<Edit />}/>
           <Route path="/Remove" element={<Remove />}/>
           <Route path="/Add" element={<Add />}/>
+
+          {/**this is the catch all route */}
+          <Route path="*" element={<Missing />}/>
         </Routes>
          
         </div>
