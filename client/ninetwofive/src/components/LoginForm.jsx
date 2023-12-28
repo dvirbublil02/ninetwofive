@@ -37,6 +37,7 @@ export const LoginForm = () => {
        setModalMessage('! התחברת בהצלחה ');
        setShowModal(true);
 
+       
        // Use navigate to redirect the user to a new page after successful login
         navigate('/Owners');
        // Additional logic if needed
