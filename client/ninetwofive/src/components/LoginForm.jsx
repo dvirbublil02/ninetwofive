@@ -50,8 +50,14 @@ export const LoginForm = () => {
       const user = { username, userpassword };
       const accessToken =response.accessToken;
       const role = Array.isArray(response.user.role) ? response.user.role : [response.user.role];
+      const authData = {
+        user,
+        accessToken,
+        role,
+      };
+      localStorage.setItem('authData', JSON.stringify(authData));
       
-      setAuth({user,accessToken ,role});
+        setAuth({user,accessToken ,role});
        // Use navigate to redirect the user to a new page after successful login
         navigate('/Owners', {replace: true});
        // Additional logic if needed
