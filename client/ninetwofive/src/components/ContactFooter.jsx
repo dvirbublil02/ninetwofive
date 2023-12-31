@@ -56,7 +56,7 @@ export const ContactFooter =() =>{
                     <Col>
                     
                     
-                        <p class="text-center text-white">Copyright &copy; Dvir Bublil </p>
+                        <p className="text-center text-white">Copyright &copy; Dvir Bublil </p>
                         
                     </Col>
 

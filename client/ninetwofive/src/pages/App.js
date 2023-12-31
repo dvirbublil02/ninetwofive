@@ -19,6 +19,10 @@ import { Add } from "./Add";
 import { Remove } from "./Remove";
 import { OwnerNav } from "../components/OwnerNav";
 import {Missing} from "./Missing";
+import { RequireAuth } from "../components/RequireAuth";
+import {Unauthorized} from "./Unauthorized";
+
+const ROLES = { 'one' : 1, 'zero' : 0}
 
 function App() {
   const location = useLocation();
@@ -47,12 +51,15 @@ function App() {
           <Route path="/Rings" element={<Rings />}/>
           <Route path="/New" element={<New />}/>
           <Route path="/WebRules" element={<WebRules />}/>
+          <Route path="/Unauthorized" element={<Unauthorized />}/>
 
           {/**this is the protected routes */}
+          <Route element={<RequireAuth allowedRoles={[ROLES.one]}/>}>
           <Route path="/Owners" element={<Owners />}/>
           <Route path="/Edit" element={<Edit />}/>
           <Route path="/Remove" element={<Remove />}/>
           <Route path="/Add" element={<Add />}/>
+          </Route>
 
           {/**this is the catch all route */}
           <Route path="*" element={<Missing />}/>

@@ -19,7 +19,7 @@ export const Grid =() =>{
     return(
     <Container>
           <Row className='px-5 my-5'>
-            <h1 class='text-center fw-light'>NineTw<img src="./images/gem.svg" alt="◇" width="30" height="30"></img>Five </h1>
+            <h1 className='text-center fw-light'>NineTw<img src="./images/gem.svg" alt="◇" width="30" height="30"></img>Five </h1>
           </Row>
           
             <Row>

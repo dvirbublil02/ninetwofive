@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import { Container, Form, Button,Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-
-
 import { loginUser } from '../apis/ServerApi';
+import useAuth from '../hooks/useAuth.js'
 
 export const LoginForm = () => {
+
+  
   const [userName, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
 
+  //storing the context if its success login.
+  const {setAuth} = useAuth();
+
     // useNavigate hook for programmatic navigation
     const navigate = useNavigate();
-
+  
+   
   const handleCloseModal = () => setShowModal(false);
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -33,12 +38,22 @@ export const LoginForm = () => {
       const response = await loginUser(userName, password);
  
       if (response && response.success) {
-       console.log('User created successfully');
+       console.log('User successfully authorized');
        setModalMessage('! התחברת בהצלחה ');
        setShowModal(true);
 
+     // how to access to response info.  response.user.userpassword ...
+// Extracting username and userpassword from response.user
+    const { username, userpassword } = response.user;
+
+
+      const user = { username, userpassword };
+      const accessToken =response.accessToken;
+      const role = Array.isArray(response.user.role) ? response.user.role : [response.user.role];
+      
+      setAuth({user,accessToken ,role});
        // Use navigate to redirect the user to a new page after successful login
-        navigate('/Owners');
+        navigate('/Owners', {replace: true});
        // Additional logic if needed
      } else if (response && response.message) {
        console.error('Failed to create user:', response.message);
