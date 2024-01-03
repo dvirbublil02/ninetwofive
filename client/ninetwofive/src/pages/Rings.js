@@ -1,66 +1,23 @@
 
 import ProductPage from '../components/ProductPage';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchProducts } from '../apis/ServerApi';
 
 export const Rings =() =>{
-  const ringsProducts = [
-    {
-      id: 1,
-      name: 'Elegant Silver Bracelet',
-      image: './images/r1.jpg',
-      price: '$49.99',
-    },
-    {
-      id: 2,
-      name: 'Stylish Silver Necklace',
-      image: './images/r2.jpg',
-      price: '$79.99',
-    },
-    {
-      id: 3,
-      name: 'Classic Silver Earrings',
-      image: './images/r3.jpg',
-      price: '$29.99',
-    },
-    {
-      id: 4,
-      name: 'Classic Silver Earrings',
-      image: './images/r4.jpg',
-      price: '$29.99',
-    },
-    {
-      id: 5,
-      name: 'Classic Silver Earrings',
-      image: './images/r5.jpg',
-      price: '$29.99',
-    },
-    {
-      id: 6,
-      name: 'Classic Silver Earrings',
-      image: './images/r6.jpg',
-      price: '$29.99',
-    },
-    {
-      id: 7,
-      name: 'Classic Silver Earrings',
-      image: './images/r7.jpg',
-      price: '$29.99',
-    },
-    {
-      id: 8,
-      name: 'Classic Silver Earrings',
-      image: './images/r8.jpg',
-      price: '$29.99',
-    },
-    {
-      id: 9,
-      name: 'Classic Silver Earrings',
-      image: './images/r9.jpg',
-      price: '$29.99',
-    },
+  const [ringsProducts, setringsProducts] = useState([]);
 
-  ];
-  
+  useEffect(() => {
+    const getProductData = async () => {
+      try {
+        const products = await fetchProducts('RING');
+        setringsProducts(products);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    getProductData();
+  }, []);
 
   return <ProductPage heading="טבעות" products={ringsProducts} />;
   };

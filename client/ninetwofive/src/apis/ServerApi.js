@@ -16,3 +16,13 @@ export const loginUser = async (username, userpassword) => {
     throw error;
   }
 };
+
+// prodcuts
+export const fetchProducts = async (type) => {
+  try {
+    const response = await Axios.get(`${apiUrl}/products?type=${type}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

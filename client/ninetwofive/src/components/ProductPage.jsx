@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Modal, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Modal } from 'react-bootstrap';
 import { ContactFooter } from '../components/ContactFooter';
 
 const ProductPage = ({ heading, products }) => {
@@ -15,16 +15,7 @@ const ProductPage = ({ heading, products }) => {
     setShowModal(false);
   };
 
-  const handleAddToCart = (product) => {
-    // Add your logic here for adding the product to the cart
-    // You can use a state, context, or dispatch an action to manage the cart state
-    console.log(`Added ${product.name} to the cart`);
-  };
 
-  const handleBuyNow = (product) => {
-    // Add your logic here for handling the "Buy Now" action
-    console.log(`Buy Now: ${product.name}`);
-  };
 
   return (
     <div className="Main">
@@ -44,12 +35,6 @@ const ProductPage = ({ heading, products }) => {
                 <Card.Body className="d-flex flex-column align-items-center">
                   <Card.Title className="text-center">{product.name}</Card.Title>
                   <Card.Text className="text-center">{product.price}</Card.Text>
-                  <Button variant="primary" onClick={() => handleAddToCart(product)} className="mt-auto mr-2">
-                    Add to Cart
-                  </Button>
-                  <Button variant="success" onClick={() => handleBuyNow(product)} className="mt-auto">
-                    Buy Now
-                  </Button>
                 </Card.Body>
               </Card>
             </Col>
