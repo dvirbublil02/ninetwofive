@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchProducts } from '../apis/ServerApi';
 
 export const Bracelets =() =>{
+  
   const [braceletsProducts, setBraceletsProducts] = useState([]);
 
   useEffect(() => {

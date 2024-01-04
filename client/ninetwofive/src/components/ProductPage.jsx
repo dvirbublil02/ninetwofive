@@ -20,6 +20,7 @@ const ProductPage = ({ heading, products }) => {
 
   return (
     <div className="Main">
+      <div className="background-container1">
       <Container>
         <h2 className="text-center my-5">{heading}</h2>
         <Row>
@@ -57,6 +58,7 @@ const ProductPage = ({ heading, products }) => {
         </Modal.Body>
       </Modal>
 
+      </div>
       <ContactFooter />
     </div>
   );

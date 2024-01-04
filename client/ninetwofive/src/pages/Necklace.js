@@ -8,7 +8,7 @@ export const Necklace =() =>{
   useEffect(() => {
     const getProductData = async () => {
       try {
-        const products = await fetchProducts('WATCH');
+        const products = await fetchProducts('NECKLACE');
         setwatchesProducts(products);
       } catch (error) {
         console.error('Error fetching products:', error);

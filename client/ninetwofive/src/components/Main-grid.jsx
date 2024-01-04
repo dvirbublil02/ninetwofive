@@ -1,30 +1,20 @@
-import {Container,Row ,Col,Image} from "react-bootstrap";
+import {Container,Row ,Col} from "react-bootstrap";
 import { FaInstagram } from 'react-icons/fa';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
+import '../style.css';
 
 export const Grid =() =>{
-  const pictures = [
-    "./images/n4.jpg",
-    "./images/r8.jpg",
-    "./images/w-w4.jpg",
-    "./images/r4.jpg",
-    // Add more image paths as needed
-  ];
+
 
 
     return(
+      <div className="background-container">
     <Container>
           <Row className='px-5 my-5'>
             <h1 className='text-center fw-light'>NineTw<img src="./images/gem.svg" alt="◇" width="30" height="30"></img>Five </h1>
           </Row>
           
             <Row>
-            <Image src=" ./images/bg1.png"
-               fluid rounded className="" />
+            
             </Row>
 
           
@@ -46,23 +36,11 @@ export const Grid =() =>{
           </Row>
 
           <Row className='px-4 my-3  order-lg-1 align-self-end'>
-                <Swiper
-            spaceBetween={20}
-            slidesPerView={4}
-            navigation
-            pagination={{ clickable: true }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
-          >
-            {pictures.map((picture, index) => (
-              <SwiperSlide key={index}>
-                <Image src={picture} alt={`Slide ${index + 1}`} fluid />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+               
         </Row>
 
         
     </Container>
+   </div>
     );
 };

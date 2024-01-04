@@ -32,7 +32,8 @@ function App() {
   const isAddRoute = location.pathname === '/Add';
   return (
     //we need to route the pagees then to call it we need to use link
-    <div className="App" id ="home">
+    <div className="App" id ="home"> 
+      
       <div className="Nav">
       {isOwnersRoute ? <OwnerNav /> : isRemoveRoute ? 
       <OwnerNav /> : isEditRoute ? <OwnerNav /> : 
@@ -66,7 +67,7 @@ function App() {
         </Routes>
          
         </div>
-   
+        
     </div>
     
   );

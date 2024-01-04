@@ -5,7 +5,7 @@ export const ContactFooter =() =>{
     return(
 
 
-                <footer className="py-4 my-5 bg-dark">
+                <footer className="py-4 bg-dark">
                 <Container>
 
                 <Row>
