@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Modal } from 'react-bootstrap';
 import { ContactFooter } from '../components/ContactFooter';
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
 const ProductPage = ({ heading, products }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
+  console.log(products.map(product => product.image));
   const handleImageClick = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
@@ -28,7 +29,7 @@ const ProductPage = ({ heading, products }) => {
                 {/* Use a function to handle image click */}
                 <Card.Img
                   variant="top"
-                  src={product.image}
+                  src={`${apiUrl}${'/'}${product.image}`}
                   style={{ height: '400px', objectFit: 'cover', cursor: 'pointer' }}
                   onClick={() => handleImageClick(product)}
                 />
@@ -41,7 +42,7 @@ const ProductPage = ({ heading, products }) => {
           ))}
         </Row>
       </Container>
-
+            
       {/* Modal for displaying the selected image */}
       <Modal show={showModal} onHide={handleCloseModal} centered>
         <Modal.Header closeButton />
