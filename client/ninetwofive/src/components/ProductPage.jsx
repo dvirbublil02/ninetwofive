@@ -10,6 +10,7 @@ const ProductPage = ({ heading, products }) => {
   const handleImageClick = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
+    
   };
 
   const handleCloseModal = () => {
@@ -44,7 +45,7 @@ const ProductPage = ({ heading, products }) => {
         </Row>
       </Container>
             
-      {/* Modal for displaying the selected image */}
+      {/* Modal to display image when its clicked */}
       <Modal show={showModal} onHide={handleCloseModal} centered>
         <Modal.Header closeButton />
         <Modal.Body>

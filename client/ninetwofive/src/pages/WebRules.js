@@ -51,6 +51,7 @@ export const WebRules =() =>{
                                 <p className="mb-4 my-4"><strong>5. Content Ownership:</strong></p>
                                 <p className="mb-2">
                                     Respect Copyright: Do not share or distribute copyrighted material without proper authorization.
+                                    ( including not copying any of the web contact  )
                                 </p>
                                 <p className="mb-2">
                                     No Copying: Users are strictly prohibited from copying any content, design elements, or images from NineTwoFive. All intellectual property rights are reserved.

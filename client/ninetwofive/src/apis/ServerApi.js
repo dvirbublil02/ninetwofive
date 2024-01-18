@@ -17,12 +17,22 @@ export const loginUser = async (username, userpassword) => {
   }
 };
 
-// prodcuts
+//import prodcuts
 export const fetchProducts = async (type) => {
   try {
     const response = await Axios.get(`${apiUrl}/products?type=${type}`);
     return response.data;
   } catch (error) {
+    throw error;
+  }
+};
+
+//add product
+export const addProduct = async (name,image,price,type) => {
+  try {
+    const response = await Axios.post(`${apiUrl}/addProduct`,{name,image,price,type});
+      return response;
+  } catch (error){
     throw error;
   }
 };

@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Container, Card, Form, Button,Row,Col } from 'react-bootstrap';
 import { Footer } from '../components/MainFooter';
+import { addProduct } from '../apis/ServerApi';
 
-export const Add = () => {
+export const Add =  () => {
   const [product, setProduct] = useState({
     name: '',
     price: '',
-    image: '',
+    image: null,
     category: '',
   });
 
@@ -20,7 +21,7 @@ export const Add = () => {
     setProduct({ ...product, image: file });
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   
     // Validation checks
@@ -44,9 +45,15 @@ export const Add = () => {
       alert('Invalid image format. Use only JPG images.');
       return;
     }
-  
+
+
     // TODO: Send the product information to the server
-    console.log('Product Submitted:', product);
+    try {
+      const response = await addProduct(product.name,product.price,product.image,product.category);
+      console.log(response);
+    }catch(error){
+      console.log(error);
+    };
   
     // Reset the form after submission
     setProduct({ name: '', price: '', image: null, category: '' });
